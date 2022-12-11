@@ -4,16 +4,28 @@
 #     - [2, 3, 4, 5, 6] => [12, 15, 16];
 #     - [2, 3, 5, 6] => [12, 15]
 
-list = [2, 3, 5, 6]                                   # данный список
-list2 = []                                            # создали второй для вывода
-n = 0                                                 # переменная для хранения длины половины списка
+# list = [2, 3, 5, 6]                                   # данный список
+# list2 = []                                            # создали второй для вывода
+# n = 0                                                 # переменная для хранения длины половины списка
 
-if len(list) % 2   == 0 :
-    n = (len(list)//2)
-else:
-    n = (len(list)//2)  +  1                           # если чисел четное кол-во то берем len//2 , если нечетное len//2 + 1
+# if len(list) % 2   == 0 :
+#     n = (len(list)//2)
+# else:
+#     n = (len(list)//2)  +  1                           # если чисел четное кол-во то берем len//2 , если нечетное len//2 + 1
 
-for i in range(n):                                     # цикл с заполнением другого списка значениями перемножения пар
-    list2.append(list[i] * list[len(list)-i-1])
+# for i in range(n):                                     # цикл с заполнением другого списка значениями перемножения пар
+#     list2.append(list[i] * list[len(list)-i-1])
 
-print(list2)
+# print(list2)
+
+# УЛУЧШЕНИЕ
+
+def mult_lst(lst):
+    l = len(lst)//2 + 1 if len(lst) % 2 != 0 else len(lst)//2
+    new_lst = [lst[i]*lst[len(lst)-i-1] for i in range(l)]
+    print(new_lst)
+
+lst = [2, 3, 4, 5, 6]
+mult_lst(lst)
+lst = list(map(int, input("Введите числа через пробел:\n").split()))
+mult_lst(lst)
